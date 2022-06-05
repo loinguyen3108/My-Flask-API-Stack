@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  postgres:
+    build: ./postgres
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+
+  service_home_test:
+    container_name: service-home-test
+    build: ../Home-Test-Thuoc-Si
+    restart: always
+    ports:
+      - 8000:8000
+    environment:
+      - SECERT_KEY=9c97709fadd143665717c634c260e83a3cf34b64130a0da80a90bafc28ecf098
+      - USER=service_home_test
+      - PASSWORD=service_home_test
+      - DATABASE=home_test
+      - HOST=postgres
+      - PORT=5432
+    volumes:
+      - ../Home-Test-Thuoc-Si:/app
+    links:
+      - postgres
