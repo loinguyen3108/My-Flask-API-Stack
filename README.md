@@ -12,7 +12,7 @@ Cấu trúc các project cần để như ví dụ bên dưới:
 
 ## Install App
 ```
-git clone 
+git clone git@github.com:loinguyen3108/Dev-Stack-Thuoc-Si.git
 ```
 
 ## Start App
